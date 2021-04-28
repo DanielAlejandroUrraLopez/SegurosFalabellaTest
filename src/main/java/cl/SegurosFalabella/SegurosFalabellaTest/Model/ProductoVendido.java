@@ -1,20 +1,32 @@
 package cl.SegurosFalabella.SegurosFalabellaTest.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "producto")
-public class Producto {
-
+@Table(name = "producto_vendido")
+public class ProductoVendido {
+	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int idTbl;
 	private int id;
 	private String nombre;
 	private int sellIn;
 	private int price;
 	
 	
+	public int getIdTbl() {
+		return idTbl;
+	}
+
+	public void setIdTbl(int idTbl) {
+		this.idTbl = idTbl;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -46,6 +58,4 @@ public class Producto {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
-	
 }
