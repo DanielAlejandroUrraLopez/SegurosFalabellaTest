@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cl.SegurosFalabella.SegurosFalabellaTest.NomProductoEnum;
+import cl.SegurosFalabella.SegurosFalabellaTest.Enum.NomProductoEnum;
 import cl.SegurosFalabella.SegurosFalabellaTest.Model.Producto;
 import cl.SegurosFalabella.SegurosFalabellaTest.Model.ProductoVendido;
 import cl.SegurosFalabella.SegurosFalabellaTest.Repository.SegurosFalabellaTestProductoVendidoRepository;
@@ -16,8 +16,7 @@ import cl.SegurosFalabella.SegurosFalabellaTest.Service.SegurosFalabellaTestServ
 @Service
 public class SegurosFalabellaTestServiceImpl implements SegurosFalabellaTestService {
 
-
-		@Autowired
+	@Autowired
 	private SegurosFalabellaTestRepository segurosFalabellaTestRepository;
 
 	@Autowired
@@ -62,12 +61,13 @@ public class SegurosFalabellaTestServiceImpl implements SegurosFalabellaTestServ
 	@Override
 	public List<ProductoVendido> listaProductosVendidosXDias(int dias) {
 
-		List<ProductoVendido> listProductoVendido = (List<ProductoVendido>) ((Collection<ProductoVendido>) segurosFalabellaTestProductoVendidoRepository.findAll());
+		List<ProductoVendido> listProductoVendido = (List<ProductoVendido>) ((Collection<ProductoVendido>) segurosFalabellaTestProductoVendidoRepository
+				.findAll());
 		int cont = 0;
 
 		while (cont <= dias) {
 
-			System.out.println("-----------------día "+cont+"-----------------");
+			System.out.println("-----------------día " + cont + "-----------------");
 			System.out.println("nombre, sellIn, price");
 			listProductoVendido.forEach(lpv -> {
 
@@ -92,9 +92,9 @@ public class SegurosFalabellaTestServiceImpl implements SegurosFalabellaTestServ
 						lpv.setPrice(0);
 					}
 					lpv.setSellIn(d - 1);
-					
-					System.out.println(lpv.getNombre()+", "+lpv.getSellIn()+", "+lpv.getPrice());
-					
+
+					System.out.println(lpv.getNombre() + ", " + lpv.getSellIn() + ", " + lpv.getPrice());
+
 				} else if (lpv.getNombre().equals(NomProductoEnum.FULL_COBERTURA_SUPER_DUPER.getNomProducto())) {
 					int d = lpv.getSellIn();
 					if (d >= 0) {
@@ -116,12 +116,12 @@ public class SegurosFalabellaTestServiceImpl implements SegurosFalabellaTestServ
 						lpv.setPrice(0);
 					}
 					lpv.setSellIn(d - 1);
-					
-					System.out.println(lpv.getNombre()+", "+lpv.getSellIn()+", "+lpv.getPrice());
+
+					System.out.println(lpv.getNombre() + ", " + lpv.getSellIn() + ", " + lpv.getPrice());
 				} else if (lpv.getNombre().equals(NomProductoEnum.MEGA_COBERTURA.getNomProducto())) {
 					lpv.setPrice(180);
-					
-					System.out.println(lpv.getNombre()+", "+lpv.getSellIn()+", "+lpv.getPrice());
+
+					System.out.println(lpv.getNombre() + ", " + lpv.getSellIn() + ", " + lpv.getPrice());
 				} else if (lpv.getNombre().equals(NomProductoEnum.SUPER_AVANCE.getNomProducto())) {
 					int d = lpv.getSellIn();
 
@@ -138,8 +138,8 @@ public class SegurosFalabellaTestServiceImpl implements SegurosFalabellaTestServ
 					}
 
 					lpv.setSellIn(d - 1);
-					
-					System.out.println(lpv.getNombre()+", "+lpv.getSellIn()+", "+lpv.getPrice());
+
+					System.out.println(lpv.getNombre() + ", " + lpv.getSellIn() + ", " + lpv.getPrice());
 				} else {
 					int d = lpv.getSellIn();
 
@@ -153,8 +153,8 @@ public class SegurosFalabellaTestServiceImpl implements SegurosFalabellaTestServ
 						}
 					}
 					lpv.setSellIn(d - 1);
-					
-					System.out.println(lpv.getNombre()+", "+lpv.getSellIn()+", "+lpv.getPrice());
+
+					System.out.println(lpv.getNombre() + ", " + lpv.getSellIn() + ", " + lpv.getPrice());
 				}
 
 			});
@@ -164,16 +164,16 @@ public class SegurosFalabellaTestServiceImpl implements SegurosFalabellaTestServ
 
 		return null;
 	}
-	
-public ProductoVendido deProductoAProductoVendido(Producto producto) {
-		
+
+	public ProductoVendido deProductoAProductoVendido(Producto producto) {
+
 		ProductoVendido pv = new ProductoVendido();
-		
+
 		pv.setId(producto.getId());
 		pv.setNombre(producto.getNombre());
 		pv.setPrice(producto.getPrice());
 		pv.setSellIn(producto.getSellIn());
-		
+
 		return pv;
 	}
 

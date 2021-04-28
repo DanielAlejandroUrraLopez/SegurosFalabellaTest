@@ -1,4 +1,4 @@
-package cl.SegurosFalabella.SegurosFalabellaTest;
+package cl.SegurosFalabella.SegurosFalabellaTest.Enum;
 
 public enum NomProductoEnum {
 	
